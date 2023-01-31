@@ -1,0 +1,10 @@
+micronaut:
+  application:
+    name: orders
+netty:
+  default:
+    allocator:
+      max-order: 3
+
+mongodb:
+  uri: "mongodb://root:root@[::1]:27017/tracking?authSource=admin&authMechanism=SCRAM-SHA-256&tls=false"
