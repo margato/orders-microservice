@@ -1,7 +1,7 @@
 package io.github.margato.orders.application.enums
 
 
-enum class OrderStatus(code: String, description: String) {
+enum class OrderStatus(val code: String, val description: String) {
     CREATED("CREATED", "Order created"),
     CANCELLED("CANCELLED", "Order cancelled"),
     PACKING("PACKING", "Packing order"),
