@@ -46,6 +46,6 @@ fun ShippingInfo.mapToDocument(): ShippingInfoDocument =
             streetName,
             city,
             countryCode,
-            extraDetail
+            additionalAddressDetails
         )
     }

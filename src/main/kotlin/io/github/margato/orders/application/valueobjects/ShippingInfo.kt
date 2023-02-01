@@ -9,5 +9,5 @@ data class ShippingInfo(
     val streetName: String,
     val city: String,
     val countryCode: String,
-    val extraDetail: String,
+    val additionalAddressDetails: String,
 )

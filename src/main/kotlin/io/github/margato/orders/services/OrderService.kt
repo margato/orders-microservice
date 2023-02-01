@@ -19,7 +19,16 @@ class OrderService(
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    override fun createOrder(command: OrderUseCase.CreateOrderCommand): Mono<Order> =
+    override fun createOrder(command: OrderUseCase.CreateOrderCommand): Mono<Order> {
+        return saveOrderWithIdempotency(command)
+    }
+
+
+    override fun findOrder(id: String): Mono<Order> {
+        return orderRepository.findById(id)
+    }
+
+    private fun saveOrderWithIdempotency(command: OrderUseCase.CreateOrderCommand): Mono<Order> =
         with(command) {
             when (idempotencyKey.isNullOrBlank()) {
                 true -> saveNewOrder(
@@ -40,11 +49,6 @@ class OrderService(
                     )
             }
         }
-
-
-    override fun findOrder(id: String): Mono<Order> {
-        return orderRepository.findById(id)
-    }
 
     private fun saveNewOrder(
         idempotencyKey: String? = null,

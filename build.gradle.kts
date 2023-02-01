@@ -36,6 +36,12 @@ dependencies {
     runtimeOnly("ch.qos.logback.contrib:logback-jackson:0.1.5")
     runtimeOnly("org.mongodb:mongodb-driver-reactivestreams")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.1.7")
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
 
 application {
@@ -57,6 +63,7 @@ tasks {
         }
     }
 }
+
 graalvmNative.toolchainDetection.set(false)
 micronaut {
     runtime("netty")
