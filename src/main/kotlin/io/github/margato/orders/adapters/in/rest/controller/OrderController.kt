@@ -11,17 +11,18 @@ import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
+import io.micronaut.retry.annotation.CircuitBreaker
 import reactor.core.publisher.Mono
 import java.util.*
-import javax.validation.Valid
 
 @Controller("/orders")
-open class OrderController(
+@CircuitBreaker(delay = "1s", attempts = "2", reset = "30s")
+class OrderController(
     private val orderUseCase: OrderUseCase,
 ) {
 
     @Post
-    open fun create(@Body request: OrderRequest, headers: HttpHeaders): Mono<OrderResponse> {
+    fun create(@Body request: OrderRequest, headers: HttpHeaders): Mono<OrderResponse> {
         val idempotencyKey = headers.get(Constants.IDEMPOTENCY_KEY)
 
         return orderUseCase
@@ -30,8 +31,7 @@ open class OrderController(
     }
 
     @Get("/{id}")
-    @Valid
-    open fun getById(id: String): Mono<OrderResponse> {
+    fun getById(id: String): Mono<OrderResponse> {
         return orderUseCase
             .findOrder(id)
             .map { it.mapToResponse() }
