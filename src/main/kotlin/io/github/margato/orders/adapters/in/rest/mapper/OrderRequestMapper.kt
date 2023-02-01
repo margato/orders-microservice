@@ -29,7 +29,7 @@ fun ShippingInfoDto.mapToShippingInfo(): ShippingInfo =
             streetName,
             city,
             countryCode,
-            extraDetail
+            additionalAddressDetails
         )
     }
 

@@ -32,7 +32,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     implementation("io.micronaut:micronaut-validation")
 
-    runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("ch.qos.logback.contrib:logback-json-classic:0.1.5")
+    runtimeOnly("ch.qos.logback.contrib:logback-jackson:0.1.5")
     runtimeOnly("org.mongodb:mongodb-driver-reactivestreams")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 }

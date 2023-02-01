@@ -10,5 +10,5 @@ data class ShippingInfoDto(
     @JsonProperty("street_name") val streetName: String,
     @JsonProperty("city") val city: String,
     @JsonProperty("country_code") val countryCode: String,
-    @JsonProperty("extra_detail") val extraDetail: String,
+    @JsonProperty("additional_address_details") val additionalAddressDetails: String,
 )
