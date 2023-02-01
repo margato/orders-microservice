@@ -8,7 +8,7 @@ import io.micronaut.serde.annotation.Serdeable
 @MappedEntity("Orders")
 data class OrderDocument(
     @field:Id
-    @field:GeneratedValue(GeneratedValue.Type.UUID)
+    @field:GeneratedValue
     val id: String? = null,
     val idempotencyKey: String? = null,
     val products: List<ProductDocument>,
