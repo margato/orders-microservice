@@ -17,7 +17,11 @@ class OrderRequestMapperTest : DescribeSpec({
                     UUID.randomUUID().toString()
                 ),
                 listOf(
-                    ProductDto(UUID.randomUUID().toString())
+                    ProductDto(UUID.randomUUID().toString()),
+                    ProductDto(UUID.randomUUID().toString()),
+                    ProductDto(UUID.randomUUID().toString()),
+                    ProductDto(UUID.randomUUID().toString()),
+                    ProductDto(UUID.randomUUID().toString()),
                 ),
                 ShippingInfoDto(
                     zipCode = "00000-000",
@@ -53,6 +57,8 @@ class OrderRequestMapperTest : DescribeSpec({
                     UUID.randomUUID().toString()
                 ),
                 listOf(
+                    ProductDto(UUID.randomUUID().toString()),
+                    ProductDto(UUID.randomUUID().toString()),
                     ProductDto(UUID.randomUUID().toString())
                 ),
                 ShippingInfoDto(
@@ -79,6 +85,7 @@ class OrderRequestMapperTest : DescribeSpec({
             command.shippingInfo.streetName shouldBe request.shippingInfo.streetName
             command.shippingInfo.additionalAddressDetails shouldBe request.shippingInfo.additionalAddressDetails
 
+            command.products.size shouldBe request.products.size
             command.products.zip(request.products).forEach { pair ->
                 pair.first.id shouldBe pair.second.id
             }
