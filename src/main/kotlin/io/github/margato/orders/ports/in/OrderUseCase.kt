@@ -5,12 +5,14 @@ import io.github.margato.orders.application.entities.Order
 import io.github.margato.orders.application.entities.Product
 import io.github.margato.orders.application.valueobjects.ShippingInfo
 import io.micronaut.serde.annotation.Serdeable
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 interface OrderUseCase {
 
     fun createOrder(command: CreateOrderCommand): Mono<Order>
     fun findOrder(id: String): Mono<Order>
+    fun findOrders(): Flux<Order>
 
     @Serdeable
     data class CreateOrderCommand(
