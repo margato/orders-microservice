@@ -9,6 +9,7 @@ import io.github.margato.orders.application.entities.Order
 import io.github.margato.orders.application.entities.Product
 import io.github.margato.orders.application.extensions.mapToObject
 import io.github.margato.orders.application.valueobjects.ShippingInfo
+import java.time.ZonedDateTime
 
 fun Order.mapToDocument(): OrderDocument =
     mapToObject {
@@ -17,7 +18,9 @@ fun Order.mapToDocument(): OrderDocument =
             products = products.mapToDocument(),
             status = status.code,
             customer = customer.mapToDocument(),
-            shippingInfo = shippingInfo.mapToDocument()
+            shippingInfo = shippingInfo.mapToDocument(),
+            createdAt = createdAt,
+            updatedAt = updatedAt
         )
     }
 

@@ -19,7 +19,9 @@ fun OrderDocument.mapToDomain(): Order =
             products.mapToDomain(),
             OrderStatus.valueOf(status),
             customer.mapToDomain(),
-            shippingInfo.mapToDomain()
+            shippingInfo.mapToDomain(),
+            createdAt,
+            updatedAt
         )
     }
 

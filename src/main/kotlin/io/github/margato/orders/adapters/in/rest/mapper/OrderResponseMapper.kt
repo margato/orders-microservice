@@ -18,6 +18,8 @@ fun Order.mapToResponse(): OrderResponse =
             customer = customer.mapToResponse(),
             products = products.mapToResponse(),
             shippingInfo = shippingInfo.mapToResponse(),
+            createdAt,
+            updatedAt
         )
     }
 

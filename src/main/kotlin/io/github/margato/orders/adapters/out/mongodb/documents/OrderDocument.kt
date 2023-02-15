@@ -4,6 +4,7 @@ import io.micronaut.data.annotation.GeneratedValue
 import io.micronaut.data.annotation.Id
 import io.micronaut.data.annotation.MappedEntity
 import io.micronaut.serde.annotation.Serdeable
+import java.time.ZonedDateTime
 
 @MappedEntity("Orders")
 data class OrderDocument(
@@ -15,6 +16,8 @@ data class OrderDocument(
     val status: String,
     val customer: CustomerDocument,
     val shippingInfo: ShippingInfoDocument,
+    val createdAt: ZonedDateTime? = null,
+    val updatedAt: ZonedDateTime? = null,
 )
 
 @Serdeable
